@@ -1,0 +1,29 @@
+.recommendations-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 15px;
+    background-image: url('../../public/all_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.recommendations-container h2 {
+    margin-bottom: 15px;
+}
+
+.recommendations-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.recommendations-container li {
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

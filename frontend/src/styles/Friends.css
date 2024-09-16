@@ -1,0 +1,40 @@
+.friends-container {
+    background-image: url('../../public/all_background.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    padding: 15px 25px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    transition: transform 0.2s ease;
+    width: 100%;
+    max-width: 400px;
+}
+
+li:hover {
+    transform: scale(1.05);
+}
