@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
@@ -16,9 +17,10 @@ const Login = () => {
     try {
       const res = await axios.post('http://localhost:5000/api/users/login', formData);
       localStorage.setItem('token', res.data.token);
-      console.log('Logged in');
+      toast.success("LogIn successful");
       navigate('/');
     } catch (err) {
+      toast.error(`Error: ${err}`);
       console.error(err);
     }
   };

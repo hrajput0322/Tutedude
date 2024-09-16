@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/FriendRequests.css';
+import { toast } from 'react-toastify';
 
 const FriendRequests = () => {
   const [friendRequests, setFriendRequests] = useState([]);
@@ -30,7 +31,7 @@ const FriendRequests = () => {
           headers: { Authorization: token },
         }
       );
-      alert('Friend request accepted!');
+      toast.success('Friend request accepted!');
       setFriendRequests(friendRequests.filter((req) => req._id !== requestId));
     } catch (err) {
       console.error('Error accepting friend request:', err);
@@ -47,7 +48,7 @@ const FriendRequests = () => {
           headers: { Authorization: token },
         }
       );
-      alert('Friend request rejected!');
+      toast.error('Friend request rejected!');
       setFriendRequests(friendRequests.filter((req) => req._id !== requestId));
     } catch (err) {
       console.error('Error rejecting friend request:', err);

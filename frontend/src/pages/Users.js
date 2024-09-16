@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Users.css';
+import { toast } from 'react-toastify';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -37,7 +38,7 @@ const Users = () => {
           headers: { Authorization: token },
         }
       );
-      alert('Friend request sent!');
+      toast.success("Friend Request Sent");
     } catch (err) {
       console.error('Error sending friend request:', err);
     }
