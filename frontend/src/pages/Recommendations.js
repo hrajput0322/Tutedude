@@ -9,7 +9,7 @@ const Recommendations = () => {
     const fetchRecommendations = async () => {
       const token = localStorage.getItem('token');
       try {
-        const resRecommendations = await axios.get('http://localhost:5000/api/friends/friendsOfFriends', {
+        const resRecommendations = await axios.get('https://tutedude-2o6n.onrender.com/api/friends/friendsOfFriends', {
           headers: { Authorization: token },
         });
         setRecommendations(resRecommendations.data);
@@ -24,7 +24,7 @@ const Recommendations = () => {
     const token = localStorage.getItem('token');
     try {
       await axios.post(
-        'http://localhost:5000/api/friends/request',
+        'https://tutedude-2o6n.onrender.com/api/friends/request',
         { friendId },
         {
           headers: { Authorization: token },

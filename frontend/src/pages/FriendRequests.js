@@ -10,7 +10,7 @@ const FriendRequests = () => {
     const fetchRequests = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://localhost:5000/api/friends/requests', {
+        const res = await axios.get('https://tutedude-2o6n.onrender.com/api/friends/requests', {
           headers: { Authorization: token },
         });
         setFriendRequests(res.data);
@@ -25,7 +25,7 @@ const FriendRequests = () => {
     const token = localStorage.getItem('token');
     try {
       await axios.post(
-        'http://localhost:5000/api/friends/accept',
+        'https://tutedude-2o6n.onrender.com/api/friends/accept',
         { requestId },
         {
           headers: { Authorization: token },
@@ -42,7 +42,7 @@ const FriendRequests = () => {
     const token = localStorage.getItem('token');
     try {
       await axios.post(
-        'http://localhost:5000/api/friends/reject',
+        'https://tutedude-2o6n.onrender.com/api/friends/reject',
         { requestId },
         {
           headers: { Authorization: token },

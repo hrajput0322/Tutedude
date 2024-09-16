@@ -15,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/users/signup', formData);
+      const res = await axios.post('https://tutedude-2o6n.onrender.com/api/users/signup', formData);
       
       localStorage.setItem('token', res.data.token);
       toast.success("SignUp successful");

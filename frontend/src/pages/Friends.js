@@ -9,7 +9,7 @@ const Friends = () => {
     const fetchFriends = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://localhost:5000/api/friends', {
+        const res = await axios.get('https://tutedude-2o6n.onrender.com/api/friends', {
           headers: { Authorization: token },
         });
         setFriends(res.data);
