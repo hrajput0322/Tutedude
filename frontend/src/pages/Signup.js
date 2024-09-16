@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../components/Loading';
 import '../styles/Signup.css';
 import { toast } from 'react-toastify';
 
 const Signup = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -14,17 +16,23 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await axios.post('https://tutedude-2o6n.onrender.com/api/users/signup', formData);
-      
       localStorage.setItem('token', res.data.token);
       toast.success("SignUp successful");
       navigate('/');
     } catch (err) {
-      toast.error(`Error: ${err}`);
+      toast.error(`Error: ${err.response.data.message}`);
       console.error('Error during sign up:', err);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="signup-container">

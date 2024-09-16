@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../components/Loading';
 import '../styles/Home.css';
 import { toast } from 'react-toastify';
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +16,7 @@ const Home = () => {
     } else {
       setIsLoggedIn(false);
     }
+    setLoading(false);
   }, []);
 
   const handleLogout = () => {
@@ -22,6 +25,10 @@ const Home = () => {
     toast.warning("LogOut Successful");
     navigate('/');
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="home-container">

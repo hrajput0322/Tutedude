@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loading from '../components/Loading';
 import '../styles/Users.css';
 import { toast } from 'react-toastify';
 
@@ -7,6 +8,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [friends, setFriends] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsersAndFriends = async () => {
@@ -23,6 +25,8 @@ const Users = () => {
         setFriends(resFriends.data.map(friend => friend._id));
       } catch (err) {
         console.error('Error fetching users or friends:', err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchUsersAndFriends();
@@ -43,6 +47,10 @@ const Users = () => {
       console.error('Error sending friend request:', err);
     }
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const filteredUsers = users.filter((user) =>
     user.username.toLowerCase().includes(searchTerm.toLowerCase())
