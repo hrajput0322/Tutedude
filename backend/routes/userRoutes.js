@@ -54,4 +54,8 @@ router.get('/all', authMiddleware, async (req, res) => {
     }
 });
 
+router.get('/dummy', (req, res) => {
+  res.json({message: 'this is a test route'});
+})
+
 module.exports = router;
